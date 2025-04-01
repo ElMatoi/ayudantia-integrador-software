@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres:17
+    container_name: db  
+    networks:
+      - backend
+    environment:
+      POSTGRES_DB: dbpostgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: backend:latest  
+    container_name: backend
+    ports:
+      - "3000:3000"
+    networks:
+      - backend
+    environment:
+      APP_PORT: 3000
+      DATABASE_TYPE: postgres
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: dbpostgres
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: pass
+    depends_on:
+      db:
+        condition: service_healthy  
+
+networks:
+  backend:
+    driver: bridge  
+
+volumes:
+  backend-node-modules: {}
+  postgres_data: {}
