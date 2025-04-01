@@ -18,6 +18,7 @@ docker compose up -d
 
 ### . env
 crear un archivo .env en la carpeta del backend con las siguientes credenciales:
+```bash
 APP_PORT=3000
 DATABASE_TYPE="postgres"
 DATABASE_HOST="localhost"
@@ -25,6 +26,7 @@ DATABASE_PORT="5432"
 DATABASE_USERNAME="postgres"
 DATABASE_PASSWORD="pass"
 DATABASE_NAME="dbpostgres"
+```
 
 
 
