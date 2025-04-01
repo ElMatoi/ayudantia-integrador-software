@@ -26,8 +26,7 @@ DATABASE_USERNAME="postgres"
 DATABASE_PASSWORD="pass"
 DATABASE_NAME="dbpostgres"
 
-## Estructura de ejemplo
-(backend/assets/Untitled.png)
+
 
 ## API 
 
