@@ -16,6 +16,11 @@ docker compose build --no-cache
 docker compose up -d
 ```
 
+### Instalar dependencias
+```bash
+npm install
+```
+
 ### . env
 crear un archivo .env en la carpeta del backend con las siguientes credenciales:
 ```bash
