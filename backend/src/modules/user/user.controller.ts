@@ -15,9 +15,9 @@ export class UserController {
     getUser(@Param("rut") rut: string):Promise<ApiResponse<any>> {
     return this.userService.dataUserByRut(rut);
 }
+  @Get("all-users")
+    getAllUsers():Promise <ApiResponse<any>>{
+      return this.userService.getAllUsers();
 
-
-
-
-  
-}
+    }
+  }
