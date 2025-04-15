@@ -32,7 +32,11 @@ DATABASE_USERNAME="postgres"
 DATABASE_PASSWORD="pass"
 DATABASE_NAME="dbpostgres"
 ```
-
+### . env frontend
+crear un archivo .env con los siguiente:
+```bash
+VITE_API_URL=http://localhost:3000/
+```
 
 
 ## API 
