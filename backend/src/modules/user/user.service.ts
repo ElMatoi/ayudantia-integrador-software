@@ -1,6 +1,6 @@
 import { ApiResponse } from 'src/interface/ApiResponse';
 import { HttpException,HttpStatus  } from '@nestjs/common';
-import { CreateResponse } from 'src/utils/api-response.util.ts';
+import { CreateResponse } from 'src/utils/api-response.util';
 import { User } from './entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -14,10 +14,11 @@ export class UserService {
   ) {}
 
   
-  async createUser(data: { name: string, rut: string }): Promise<User> {
+  async createUser(data: { name: string, rut: string , password:string}): Promise<User> {
     const newUser = new User();
     newUser.name = data.name;
     newUser.rut = data.rut;
+    newUser.password=data.password
     return await this.userRepository.save(newUser);
   }
 
@@ -50,17 +51,8 @@ export class UserService {
   }
 
  
-  async getUserByRut(rut: string): Promise<User | null>{
-    const user = await this.userRepository.findOne({ where: { rut } });
-
-    if (!user) {
-      throw new HttpException(
-        { message: 'No hay usuario registrado', error: 'NOT_FOUND' },
-        HttpStatus.NOT_FOUND,
-      );
-    }
-
-    return user;
+  async getUserByRut(rut: string): Promise<User | null> {
+    return await this.userRepository.findOne({ where: { rut } });
   }
 }
 

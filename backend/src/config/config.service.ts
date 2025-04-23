@@ -28,6 +28,15 @@ const enviromentVariables = [
   "DATABASE_USERNAME",
   "DATABASE_PASSWORD",
   "DATABASE_NAME",
+  "JWT_SECRET",
+  "JWT_ALG",
+  "JWT_EXP",
+  "SECRET_SALT",
+  "SALT_ROUNDS"
+
+
+
+
  
 ]
 

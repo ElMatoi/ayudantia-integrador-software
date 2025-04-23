@@ -1,6 +1,7 @@
 import { IsNotEmpty, IsString, Length } from "class-validator";
 import { IsName } from "src/decorators/name-validator.decorator";
 import { IsRut } from "../../../decorators/rut-validator.decorator";
+import { IsPassword } from "src/decorators/password-validator.decorator";
 
 export class CreateUserDto {
   @IsString({ message: "El nombre debe ser una cadena de texto." })
@@ -15,4 +16,8 @@ export class CreateUserDto {
   @IsRut({ message: "El RUT no es válido." })
   @IsNotEmpty({ message: "El RUT no puede estar vacío." })
   rut: string = "";
+
+  @IsPassword({ message: "Password iinvalida" })
+  @IsNotEmpty({ message: "La contraseña no puede estar vacía." })
+  password: string = "";
 }

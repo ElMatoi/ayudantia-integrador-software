@@ -6,10 +6,7 @@ import { TypeOrmModule
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './modules/user/user.module';
 import { User } from './modules/user/entities/user.entity';
-import { Reserve } from './modules/reserves/entities/reserve.entity';
-import { ReserveModule } from './modules/reserves/reserves.module';
-import { DetailModule } from './modules/detail/detail.module';
-import { Detail } from './modules/detail/entities/detail.entity';
+import { AuthModule } from './modules/auth/auth.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -21,11 +18,10 @@ import { Detail } from './modules/detail/entities/detail.entity';
       password: getEnvValue('DATABASE_PASSWORD'),
       database: getEnvValue('DATABASE_NAME'),
       synchronize: true,
-      entities: [User,Reserve,Detail], 
+      entities: [User], 
     }),
     UserModule, 
-    ReserveModule,
-    DetailModule
+    AuthModule
   ],
   controllers: [],
   providers: [],

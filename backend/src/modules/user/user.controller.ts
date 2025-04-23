@@ -8,9 +8,10 @@ export class UserController {
 
   @Post("createUser")
     create(@Body() createUserDto: CreateUserDto) {
-    const {name, rut} = createUserDto
-    return this.userService.createUser({name, rut})
+    const {name, rut, password} = createUserDto
+    return this.userService.createUser({name, rut, password})
   }
+  
   @Get("user/:rut") 
     getUser(@Param("rut") rut: string):Promise<ApiResponse<any>> {
     return this.userService.dataUserByRut(rut);
